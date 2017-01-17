@@ -6,7 +6,6 @@ target/
 *.lck
 *.log
 .settings/
-*.pyc
 *.idea/
 *.iml
 classes/
@@ -14,4 +13,3 @@ classes/
 build/
 gradle/
 out/
-argfile*

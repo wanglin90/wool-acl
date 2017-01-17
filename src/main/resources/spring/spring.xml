@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!-- load properties -->
+    <context:property-placeholder ignore-resource-not-found="true" ignore-unresolvable="false" file-encoding="UTF-8"
+            location="classpath*:properties/ds.properties,file:/data/config/wool/prod.properties"
+            system-properties-mode="ENVIRONMENT"/>
+
+    <!-- task executor and scheduler -->
+    <task:annotation-driven executor="woolExecutor" scheduler="woolScheduler"/>
+    <task:executor id="woolExecutor"  pool-size="5-50" queue-capacity="100" rejection-policy="CALLER_RUNS"/>
+    <task:scheduler id="woolScheduler" pool-size="20"/>
+
+    <!-- Thread Pool -->
+    <bean id ="woolExecutor"  class ="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" >
+        <!-- core size -->
+        <property name ="corePoolSize" value ="5" />
+        <!-- idle time -->
+        <property name ="keepAliveSeconds" value ="30000" />
+        <!-- max size -->
+        <property name ="maxPoolSize" value ="20" />
+        <!-- queue size -->
+        <property name ="queueCapacity" value ="200" />
+    </bean>
+
+    <!-- scanner -->
+    <context:annotation-config />
+    <context:component-scan base-package="com.wool">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+    <!-- i18n message -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:basename="classpath:messages/message" p:fileEncodings="UTF-8"
+          p:defaultEncoding="UTF-8" p:cacheSeconds="3600"/>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+          p:cookieMaxAge="604800" p:defaultLocale="zh_CN" p:cookieName="Language"/>
+
+    <!-- import resources -->
+    <import resource="ds.xml" />
+    <import resource="redis.xml"/>
+
+</beans>

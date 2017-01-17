@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <description>Spring DataSource configuration</description>
+
+    <!-- datasource -->
+    <bean id="woolAclDs" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="${jdbc.wool.acl.url}" />
+        <property name="username" value="${jdbc.wool.acl.user}" />
+        <property name="password" value="${jdbc.wool.acl.password}" />
+        <property name="maximumPoolSize" value="${jdbc.wool.acl.maximumPoolSize}"/>
+    </bean>
+
+    <!-- transaction manager -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="woolAclDs" />
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" mode="proxy"/>
+
+    <!-- mybatis factory -->
+    <bean id="woolSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="woolAclDs"/>
+        <property name="configLocation" value="classpath:mybatis.xml"/>
+        <property name="mapperLocations" value="classpath*:com/wool/acl/*.xml"/>
+    </bean>
+
+    <!-- scan mappers under the dao dir -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="woolSqlSessionFactory"/>
+        <property name="basePackage" value="com.wool.acl.dao.mapper"/>
+    </bean>
+</beans>
