@@ -1,0 +1,17 @@
+target/
+*.swp
+*.classpath
+*.project
+*.epoch
+*.lck
+*.log
+.settings/
+*.pyc
+*.idea/
+*.iml
+classes/
+.gradle/
+build/
+gradle/
+out/
+argfile*
