@@ -43,6 +43,14 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="test" domainObjectName="Test"/>
+        <table tableName="wool_acl_user" domainObjectName="User"/>
+        <table tableName="wool_acl_app" domainObjectName="App"/>
+        <table tableName="wool_acl_group" domainObjectName="Group"/>
+        <table tableName="wool_acl_resource" domainObjectName="Resource"/>
+        <table tableName="wool_acl_role" domainObjectName="Role"/>
+        <table tableName="wool_acl_role_resource_relation" domainObjectName="RoleResourceRelation"/>
+        <table tableName="wool_acl_user_app_relation" domainObjectName="UserAppRelation"/>
+        <table tableName="wool_acl_user_group_relation" domainObjectName="UserGroupRelation"/>
+        <table tableName="wool_acl_user_role_relation" domainObjectName="UserRoleRelation"/>
     </context>
 </generatorConfiguration>
