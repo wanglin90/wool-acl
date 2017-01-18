@@ -13,11 +13,11 @@ apply plugin: "org.flywaydb.flyway"
 apply plugin: "java"
 
 flyway{
-	url = 'jdbc:mysql://127.0.0.1:3306/wool-acl?useUnicode=true&characterEncoding=utf8'
+	url = 'jdbc:mysql://127.0.0.1:3306/wool_acl?useUnicode=true&characterEncoding=utf8'
 	driver = 'com.mysql.jdbc.Driver'
-	user = 'wool-acl'
-	password = 'wool-acl'
-	schemas = ['wool-acl']
+	user = 'root'
+	password = 'root'
+	schemas = ['wool_acl']
 	locations = ['filesystem:migrations/']
 }
 

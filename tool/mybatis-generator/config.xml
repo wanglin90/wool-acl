@@ -14,8 +14,8 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/wool-acl"
-                        userId="wool-acl" password="wool-acl">
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/wool_acl"
+                        userId="root" password="root">
 
         </jdbcConnection>
 
