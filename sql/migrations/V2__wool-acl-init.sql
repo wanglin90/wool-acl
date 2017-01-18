@@ -13,13 +13,13 @@ CREATE TABLE `wool_acl_user` (
   `is_valid` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否可用 0-不可用 1-可用',
   `failure_times` tinyint(4) NOT NULL DEFAULT '0' COMMENT '失败次数',
   `failure_time` int(11) DEFAULT NULL COMMENT '失败时间',
-  `last_login_time` int(11) DEFAULT '最后登录时间',
+  `last_login_time` int(11) DEFAULT NULL COMMENT '最后登录时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_login_name` (`login_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 INSERT INTO `wool_acl_user` VALUES ('1', 'admin', 'admin', '', '1', 'oC5XAkM2', '22b6da62f8ba7ce8e331d1aec6e5272d',
-                                       '1484644595', '0', '\1', '0', '0', '1484644595');
+                                       '1484644595', '0', '', '0', '0', '1484644595');
 
 ------------------------------ Table wool_acl_app -----------------------------------------------
 DROP TABLE IF EXISTS `wool_acl_app`;
