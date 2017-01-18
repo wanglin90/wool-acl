@@ -1,7 +1,11 @@
 package com.wool.acl.dao.impl;
 
+import com.wool.acl.dao.ResourceDao;
+import org.springframework.stereotype.Repository;
+
 /**
  * Created by wanglin on 17-1-18.
  */
-public class ResourceDaoImpl {
+@Repository
+public class ResourceDaoImpl implements ResourceDao {
 }
