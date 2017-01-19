@@ -84,8 +84,9 @@ dependencies{
 	compile "org.apache.shiro:shiro-ehcache:1.2.4"
 	compile "org.apache.shiro:shiro-cas:1.2.4"
 
-	//// thymeleaf with shiro////
+	//// thymeleaf support ////
 	compile "com.github.theborakompanioni:thymeleaf-extras-shiro:1.2.1"
+	compile "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
 
 	//// alibaba dubbo ////
 	compile("com.alibaba:dubbo:2.5.3"){
