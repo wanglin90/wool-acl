@@ -12,6 +12,7 @@ public class WebPageController {
 
     @RequestMapping(value = "/index")
     String index(Model model) {
+        model.addAttribute("name", "wool-acl");
         return "index";
     }
 }
