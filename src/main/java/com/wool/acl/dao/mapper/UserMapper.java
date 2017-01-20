@@ -93,4 +93,6 @@ public interface UserMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(User record);
+
+    List<User> selectByExampleWithLimit(UserExample example);
 }
