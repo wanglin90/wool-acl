@@ -1,4 +1,4 @@
-package com.wool.acl.conctroller;
+package com.wool.acl.controller;
 
 import com.wool.acl.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
