@@ -1,4 +1,4 @@
-package com.wool.acl.controller;
+package com.wool.acl.controller.page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
